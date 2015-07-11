@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour {
 
 	public float acceleration;
 	public float turnSpeed;
+	public Color color;
 	private Rigidbody2D rigidBody;
 
 

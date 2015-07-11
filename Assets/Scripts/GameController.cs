@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GameController : MonoBehaviour {
 
@@ -9,6 +10,8 @@ public class GameController : MonoBehaviour {
 	}
 
 	public GameObject ball;
+	private Dictionary<PlayerController, int> scoreMap = new Dictionary<PlayerController, int>();
+
 
 	void Awake() {
 		if (_instance == null) {
@@ -30,5 +33,11 @@ public class GameController : MonoBehaviour {
 
 	public void reSpawn() {
 		Instantiate (ball, Vector3.zero, Quaternion.identity);
+	}
+
+	public void score(PlayerController playerController) {
+		if (scoreMap.ContainsKey(playerController)) {
+			scoreMap[playerController] += 1;
+		}
 	}
 }
