@@ -36,8 +36,18 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void score(PlayerController playerController) {
-		if (scoreMap.ContainsKey(playerController)) {
-			scoreMap[playerController] += 1;
+		Debug.Log ("Score " + playerController);
+		if (scoreMap.ContainsKey (playerController)) {
+			scoreMap [playerController] += 1;
+		} else {
+			scoreMap [playerController] = 1;
 		}
+	}
+
+	public int getScore (PlayerController player)
+	{
+		if (scoreMap.ContainsKey(player)) {
+			return scoreMap[player];
+		} else return 0;
 	}
 }
