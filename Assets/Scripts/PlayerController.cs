@@ -21,11 +21,20 @@ public class PlayerController : MonoBehaviour {
 
 	public void throttle (float throttle)
 	{
-		rigidBody.AddForce (throttle * acceleration * transform.up);
+		float factor = 4 - 3 * change () * rigidBody.velocity.magnitude / 100;
+		rigidBody.AddForce (throttle * acceleration * transform.up * factor);
 	}
 
 	public void turn (float turn)
 	{
 		transform.RotateAround (transform.position, Vector3.forward, turn * turnSpeed);
+	}
+
+	public float change() {
+		Vector2 v = rigidBody.velocity.normalized;
+		Vector2 a = transform.up;
+		float dot = Vector2.Dot (v, a);
+		dot = Mathf.Max (dot,0);
+		return dot;
 	}
 }
