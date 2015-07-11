@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour {
 
 	public void throttle (float throttle)
 	{
-		rigidBody.AddForce (throttle * acceleration * transform.forward);
+		rigidBody.AddForce (throttle * acceleration * transform.up);
 	}
 
 	public void turn (float turn)
