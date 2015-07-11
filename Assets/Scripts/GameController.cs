@@ -32,7 +32,7 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void reSpawn() {
-		Instantiate (ball, Vector3.zero, Quaternion.identity);
+		Instantiate (ball, new Vector3(22,12,0), Quaternion.identity);
 	}
 
 	public void score(PlayerController playerController) {
