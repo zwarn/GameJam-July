@@ -16,6 +16,7 @@ public class InputController : MonoBehaviour {
 	void Update () {
 
 		float throttle1 = Mathf.Max(0,Input.GetAxis ("Throttle1"));
+		playerController1.enablePower (Input.GetAxis ("Throttle1") < 0);
 		playerController1.throttle (throttle1);
 
 		float throttle2 = Mathf.Max(0,Input.GetAxis ("Throttle2"));

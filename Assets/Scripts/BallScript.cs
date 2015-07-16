@@ -13,6 +13,9 @@ public class BallScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (owner != null) {
+			owner.addPower();
+		}
 	}
 
 	void OnTriggerEnter2D(Collider2D coll) {

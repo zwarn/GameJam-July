@@ -6,7 +6,12 @@ public class PlayerController : MonoBehaviour {
 	public float acceleration;
 	public float turnSpeed;
 	public Color color;
+	public float powerCharge = 5;
+	public float powerSpend = 50;
 	private Rigidbody2D rigidBody;
+	private float power;
+	public bool powerMode = false;
+	public bool dead = false;
 
 
 	// Use this for initialization
@@ -16,7 +21,6 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
 	}
 
 	public void throttle (float throttle)
@@ -36,5 +40,21 @@ public class PlayerController : MonoBehaviour {
 		float dot = Vector2.Dot (v, a);
 		dot = Mathf.Max (dot,0);
 		return dot;
+	}
+
+	public void addPower() {
+		power += powerCharge * Time.deltaTime;
+		power = Mathf.Min (100, power);
+	}
+
+	public float getPower() {
+		return power;
+	}
+
+	public void enablePower (bool b)
+	{
+		if (b && power > 10) {
+			powerMode = true;
+		}
 	}
 }
