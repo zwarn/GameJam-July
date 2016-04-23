@@ -9,18 +9,28 @@ public class PlayerController : MonoBehaviour {
 	public float powerCharge = 5;
 	public float powerSpend = 50;
 	private Rigidbody2D rigidBody;
+	private SpriteRenderer spriteRenderer;
 	private float power;
 	public bool powerMode = false;
 	public bool dead = false;
+	private GameObject goal;
+	private float deadZone = 20;
 
 
 	// Use this for initialization
 	void Start () {
+		goal = GameObject.FindGameObjectWithTag ("Goal");
 		rigidBody = GetComponent<Rigidbody2D> ();
+		spriteRenderer = GetComponentInChildren<SpriteRenderer> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if (dead) {
+			spriteRenderer.color = new Color (0.5f, 0.5f, 0.5f);
+		} else {
+			spriteRenderer.color = new Color (1f, 1f, 1f);
+		}
 	}
 
 	public void throttle (float throttle)
@@ -57,4 +67,17 @@ public class PlayerController : MonoBehaviour {
 			powerMode = true;
 		}
 	}
+
+	void OnTriggerEnter2D(Collider2D coll) {
+		if (coll.tag == "DeadZone") {
+			dead = true;
+		}
+	}
+
+	void OnTriggerExit2D(Collider2D coll) {
+		if (coll.tag == "DeadZone") {
+			dead = false;
+		}
+	}
+		
 }

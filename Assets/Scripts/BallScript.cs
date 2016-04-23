@@ -29,8 +29,12 @@ public class BallScript : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D coll) {
 		if (coll.gameObject.tag == "Player") {
-			owner = coll.gameObject.GetComponent<PlayerController>();
-			renderer.color = owner.color;
+			PlayerController playerController = coll.gameObject.GetComponent<PlayerController>();
+
+			if (owner == null || !playerController.dead) {
+				owner = playerController;
+				renderer.color = owner.color;
+			}
 		}
 	}
 }
