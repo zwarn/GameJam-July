@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour {
 		return _instance;
 	}
 
+	public List<GameObject> spawnPoints;
 	public GameObject ball;
 	private Dictionary<PlayerController, int> scoreMap = new Dictionary<PlayerController, int>();
 
@@ -23,7 +24,7 @@ public class GameController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		reSpawn ();
 	}
 	
 	// Update is called once per frame
@@ -32,7 +33,8 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void reSpawn() {
-		Instantiate (ball, new Vector3(22,12,0), Quaternion.identity);
+		Vector3 pos = spawnPoints[Random.Range(0, spawnPoints.Count)].transform.position;
+		Instantiate (ball, pos, Quaternion.identity);
 	}
 
 	public void score(PlayerController playerController) {

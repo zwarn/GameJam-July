@@ -6,6 +6,7 @@ public class InputController : MonoBehaviour {
 	public PlayerController playerController1;
 	public PlayerController playerController2;
 	public PlayerController playerController3;
+	public PlayerController playerController4;
 
 	// Use this for initialization
 	void Start () {
@@ -25,6 +26,9 @@ public class InputController : MonoBehaviour {
 		float throttle3 = Mathf.Max(0,Input.GetAxis ("Throttle3"));
 		playerController3.throttle (throttle3);
 
+		float throttle4 = Mathf.Max(0,Input.GetAxis ("Throttle4"));
+		playerController4.throttle (throttle4);
+
 		float turn1 = -Input.GetAxis ("Turn1");
 		playerController1.turn (turn1);
 
@@ -33,5 +37,8 @@ public class InputController : MonoBehaviour {
 
 		float turn3 = -Input.GetAxis ("Turn3");
 		playerController3.turn (turn3);
+
+		float turn4 = -Input.GetAxis ("Turn4");
+		playerController4.turn (turn4);
 	}
 }
